@@ -1,6 +1,4 @@
-# dice-notation
-
-## Dice Notation EBNF
+# Dice Notation EBNF
     D                 := [Dd];
     Digit             := [0-9];
     Operator          := [+-];
