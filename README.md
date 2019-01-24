@@ -1,17 +1,20 @@
 # Dice Notation EBNF
-    D                 := [Dd];
-    Digit             := [0-9];
-    Operator          := [+-];
+    D                   := [Dd];
+    Digits              := [0-9]+;
+    Operator            := [+-];
+    StatementTerminator := [;];
 
-    numberOfSide      := digit+;
-    numberOfRolls     := digit+;
-    constant          := digit+;
+    numberOfSide        := digits;
+    numberOfRolls       := digits;
+    constant            := digits;
 
-    expression        := constant
-                      |  numberOfSides D numberOfRolls;
-                      |  numberOfSides D numberOfRolls Operator constant;
-                      ;
+    expression          := constant
+                        |  numberOfSides D numberOfRolls;
+                        |  numberOfSides D numberOfRolls Operator constant;
+                        ;
 
-    complexExpression := expression
-                      |  expression Operator complexExpression
-                      ;
+    complexExpression   := expression
+                        |  expression Operator complexExpression
+                        ;
+                        
+    statement           := complexExpression StatementTerminator;
